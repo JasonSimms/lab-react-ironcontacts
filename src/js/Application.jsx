@@ -56,6 +56,25 @@ class Application extends React.Component {
 
 
   }
+  _nameSort(){
+    console.log(`namesort`,this.state.contacts.length)
+    let sortedContacts = this.state.contacts.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
+    this.setState({
+      contacts: sortedContacts
+    })
+  }
+
+  _popularitySort(){
+    console.log('popularitysort',this.state.contacts.length)
+    let sortedPopContacts = this.state.contacts.sort(function(a, b){return a.popularity-b.popularity})
+    this.setState({
+      contacts: sortedPopContacts
+    })
+  }
   _randomContact() {
       this.state.contacts.push(list[this._generateRandomInt()])
       console.log(this.state.contacts);
