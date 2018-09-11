@@ -31,6 +31,7 @@ class Application extends React.Component {
           popularity={contacts.popularity}
           index={index}
           key={index}
+          clickToDelete={() => this._deleteContact(index)}
         />
       ));
 
@@ -47,8 +48,10 @@ class Application extends React.Component {
             <th>Picture</th>
             <th>Name</th>
             <th>Popularity</th>
+            <th>Action</th>
+
           </tr>
-          {mappedContacts}
+          {mappedContacts }
         </table>
 
       </div>
@@ -85,6 +88,13 @@ class Application extends React.Component {
     _generateRandomInt() {
         return Math.floor(Math.random() * Math.floor(list.length-5)) + 5
     }
+  _deleteContact = (index) => {
+  const contactsDeleted = this.state.contacts;
+  contactsDeleted.splice(index, 1);
+  this.setState({
+      contacts: contactsDeleted
+  })
+}
 }
 
 export default Application;
