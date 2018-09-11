@@ -10,6 +10,9 @@ class Application extends React.Component {
       contacts: []
     };
     this._randomContact = this._randomContact.bind(this);
+    this._nameSort = this._nameSort.bind(this);
+    this._popularitySort = this._popularitySort.bind(this);
+
   }
   componentDidMount(){
       this.setState({contacts : list.slice(0,5)}
@@ -35,6 +38,9 @@ class Application extends React.Component {
       <div>
         <h1>Iron Contacts by Dalina & Jason</h1>
         <button onClick={this._randomContact}>Add Random Contact</button>
+        <button onClick={this._nameSort}>Sort by name</button>
+        <button onClick={this._popularitySort}>Sort By Popularity</button>
+
 
         <table>
           <tr>
